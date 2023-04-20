@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
      <div className='text-rose-500'>
-        Hello Vikas
         </div> 
     </main>
   )

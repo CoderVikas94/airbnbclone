@@ -11,6 +11,8 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import toast from 'react-hot-toast'
 import Button from "../Button";
+import {message} from 'antd'
+import { signIn } from "next-auth/react";
 const RegisterModal = () => {
  const registerModal = useRegisterModal();
  const [isLoading, setIsLoading] = useState(false) 
@@ -27,12 +29,14 @@ const {
 }})
 
 const onSubmit:SubmitHandler<FieldValues> =(data)=> {
-    console.log(":asfafseaf")
     setIsLoading(true);
     axios.post("/api/register",data).then(()=> {
+        message.error("You are registered");
         registerModal.onClose();
     }).catch((error)=> {
   toast.error("Something went wrong");
+  message.error("Something went wrong");
+  
     }).finally(()=> {
         setIsLoading(false);
 
@@ -51,8 +55,8 @@ const bodyContent = (
 const footerContent = (
     <div className="flex flex-col gap-4 mt-3 ">
         <hr />
-        <Button outline label="Continue with Google" icon={FcGoogle} onClick={()=> {}} />
-        <Button outline label="Continue with Github" icon={AiFillGithub} onClick={()=> {}} />
+        <Button outline label="Continue with Google" icon={FcGoogle} onClick={()=> signIn('google')} />
+        <Button outline label="Continue with Github" icon={AiFillGithub} onClick={()=> signIn('github')} />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center">
             Already have an account?
