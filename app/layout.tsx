@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/Modals/RegisterModal";
+import RentModal from "./components/Modals/RentModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/Modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
@@ -28,6 +29,7 @@ const currentUser:any = await getCurrentUser()
       <body className={font.className}>
         <ClientOnly>
           {/* <ToasterProvider /> */}
+          <RentModal/>
           <LoginModal/>
           <RegisterModal />
           <Navbar  currentUser={currentUser}/>

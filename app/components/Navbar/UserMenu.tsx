@@ -7,6 +7,7 @@ import useRegisterModal from "../Hooks/useRegisterModal";
 import useLoginModal from "../Hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import { safeUser } from "@/app/types";
+import useRentModal from "../Hooks/useRentModal";
 
 interface UserMenuProps {
   currentUser?: safeUser | null;
@@ -21,6 +22,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
 
   const registerModal = useRegisterModal();
   const LoginModal = useLoginModal();
+  const RentModal = useRentModal();
 
   return (
     <div className="relative">
