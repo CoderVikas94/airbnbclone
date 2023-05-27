@@ -8,6 +8,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import { categories } from "../Navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
+import { FieldValues, useForm } from "react-hook-form";
 
 enum STEPS {
   CATEGORY = 0,
@@ -18,12 +19,65 @@ enum STEPS {
   PRICE= 5
 }
 
+// const { 
+//   register, 
+//   handleSubmit,
+//   setValue,
+//   watch,
+//   formState: {
+//     errors,
+//   },
+//   reset,
+// } = useForm<FieldValues>({
+//   defaultValues: {
+//     category: '',
+//     location: null,
+//     guestCount: 1,
+//     roomCount: 1,
+//     bathroomCount: 1,
+//     imageSrc: '',
+//     price: 1,
+//     title: '',
+//     description: '',
+//   }
+// });
+
+// const { 
+//   register, 
+//   handleSubmit,
+//   setValue,
+//   watch,
+//   formState: {
+//     errors},
+//   reset,
+// }:any = useForm<FieldValues>({
+//   defaultValues: {
+//     category: '',
+//     location: null,
+//     guestCount: 1,
+//     roomCount: 1,
+//     bathroomCount: 1,
+//     imageSrc: '',
+//     price: 1,
+//     title: '',
+//     description: '',
+//   }
+// });
+
 
 const RentModal = () => {
 
   const [step, setStep]:any = useState(STEPS.CATEGORY);
 
   const rentModal = useRentModal();
+
+  // const setCustomValue = (id: string, value: any) => {
+  //   setValue(id, value, {
+  //     shouldDirty: true,
+  //     shouldTouch: true,
+  //     shouldValidate: true
+  //   })
+  // }
 
   const onBack = ()=> {
     setStep((value:number)=> value -1)
@@ -62,6 +116,9 @@ if( step === STEPS.CATEGORY) {
 return 'Back';
 
 },[step])
+
+
+
 
   return (
    <Modal
