@@ -8,8 +8,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import { categories } from "../Navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
-import { FieldValues,SubmitHandler,useForm } from "react-hook-form";
-
+import { FieldValues, useForm } from "react-hook-form";
 
 enum STEPS {
   CATEGORY = 0,
@@ -20,46 +19,64 @@ enum STEPS {
   PRICE= 5
 }
 
+// const { 
+//   register, 
+//   handleSubmit,
+//   setValue,
+//   watch,
+//   formState: {
+//     errors,
+//   },
+//   reset,
+// } = useForm<FieldValues>({
+//   defaultValues: {
+//     category: '',
+//     location: null,
+//     guestCount: 1,
+//     roomCount: 1,
+//     bathroomCount: 1,
+//     imageSrc: '',
+//     price: 1,
+//     title: '',
+//     description: '',
+//   }
+// });
+
+// const { 
+//   register, 
+//   handleSubmit,
+//   setValue,
+//   watch,
+//   formState: {
+//     errors},
+//   reset,
+// }:any = useForm<FieldValues>({
+//   defaultValues: {
+//     category: '',
+//     location: null,
+//     guestCount: 1,
+//     roomCount: 1,
+//     bathroomCount: 1,
+//     imageSrc: '',
+//     price: 1,
+//     title: '',
+//     description: '',
+//   }
+// });
+
 
 const RentModal = () => {
 
   const [step, setStep]:any = useState(STEPS.CATEGORY);
   const rentModal = useRentModal();
 
-   const { 
-    register, 
-    handleSubmit,
-    setValue,
-    watch,
-    formState: {
-      errors,
-    },
-    reset,
-  } = useForm<FieldValues>({
-    defaultValues: {
-      category: '',
-      location: null,
-      guestCount: 1,
-      roomCount: 1,
-      bathroomCount: 1,
-      imageSrc: '',
-      price: 1,
-      title: '',
-      description: '',
-    }
-  });
-
-  const location = watch('location');
-  const category = watch('category');
-  const guestCount = watch('guestCount');
-  const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
-  const imageSrc = watch('imageSrc');
-
-  // const Map = useMemo(() => dynamic(() => import('../Map'), { 
-  //   ssr: false 
-  // }), [location]);
-
+  // const setCustomValue = (id: string, value: any) => {
+  //   setValue(id, value, {
+  //     shouldDirty: true,
+  //     shouldTouch: true,
+  //     shouldValidate: true
+  //   })
+  // }
 
   const onBack = ()=> {
     setStep((value:number)=> value -1)
@@ -70,11 +87,11 @@ const RentModal = () => {
   }
 
 const setCustomValue = (id: string, value: any) => {
-    setValue(id, value, {
-      shouldDirty: true,
-      shouldTouch: true,
-      shouldValidate: true
-    })
+    // setValue(id, value, {
+    //   shouldDirty: true,
+    //   shouldTouch: true,
+    //   shouldValidate: true
+    // })
   }
 
 const  actionLabel = useMemo(()=> {
@@ -123,6 +140,9 @@ if( step === STEPS.CATEGORY) {
 return 'Back';
 
 },[step])
+
+
+
 
   return (
    <Modal
